@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detector — TruthLens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/detector.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <a href="about.html" class="nav-brand">
+      <svg width="32" height="32" viewBox="0 0 44 44" fill="none">
+        <circle cx="22" cy="22" r="20" stroke="var(--accent)" stroke-width="2.5"/>
+        <path d="M14 22 C14 16 18 13 22 13 C26 13 30 16 30 22" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="22" cy="24" r="5" fill="var(--accent)" opacity="0.9"/>
+        <circle cx="22" cy="24" r="2" fill="var(--bg-primary)"/>
+      </svg>
+      TruthLens
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="about.html">About</a></li>
+      <li><a href="detector.html" class="active">Detector</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle-nav" id="themeToggle">☀️ / 🌙</button>
+      <div class="nav-avatar" id="navAvatar">A</div>
+      <button class="nav-hamburger" id="hamburger">☰</button>
+    </div>
+  </nav>
+
+  <!-- Detector Main -->
+  <main class="detector-wrapper page-section">
+    <div class="detector-header fade-in">
+      <span class="tag tag-cyan">🔍 Real-Time Analysis</span>
+      <h1 class="section-title">The <span>Truth</span> Detector</h1>
+      <p class="section-subtitle">Upload a file or paste any social media URL to check if it's real or fake.</p>
+    </div>
+
+    <!-- Input Tabs -->
+    <div class="input-card card fade-in" id="inputCard">
+      <div class="input-tabs">
+        <button class="input-tab active" data-input="upload">
+          📁 Upload File
+        </button>
+        <button class="input-tab" data-input="url">
+          🔗 Paste URL
+        </button>
+      </div>
+
+      <!-- Upload Panel -->
+      <div class="input-panel active" id="panel-upload">
+        <div class="dropzone" id="dropzone">
+          <div class="dropzone-inner" id="dropzoneInner">
+            <div class="dropzone-icon">📤</div>
+            <p class="dropzone-title">Drag & drop your file here</p>
+            <p class="dropzone-sub">Supports: JPG, PNG, WEBP, MP4, MOV, AVI — Max 100MB</p>
+            <label class="btn-outline" style="cursor:pointer; display:inline-block; margin-top:16px;">
+              Choose File <input type="file" id="fileInput" accept="image/*,video/*" hidden />
+            </label>
+          </div>
+          <!-- Preview will appear here -->
+          <div class="file-preview" id="filePreview" style="display:none;">
+            <img id="previewImg" src="" alt="Preview" />
+            <video id="previewVid" controls style="display:none;"></video>
+            <div class="file-preview-info">
+              <span id="fileName" class="file-name"></span>
+              <span id="fileSize" class="file-size"></span>
+              <button class="remove-file" onclick="removeFile()">✕ Remove</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- URL Panel -->
+      <div class="input-panel" id="panel-url">
+        <div class="url-input-group">
+          <div class="url-platforms">
+            <span class="platform-chip">🐦 Twitter</span>
+            <span class="platform-chip">📘 Facebook</span>
+            <span class="platform-chip">📸 Instagram</span>
+            <span class="platform-chip">▶️ YouTube</span>
+            <span class="platform-chip">🎵 TikTok</span>
+          </div>
+          <div class="url-field">
+            <span class="url-icon">🔗</span>
+            <input type="url" id="urlInput" placeholder="Paste social media URL here (e.g. https://twitter.com/...)" />
+          </div>
+          <p class="url-note">⚠️ Make sure the URL is publicly accessible. Private posts cannot be analyzed.</p>
+        </div>
+      </div>
+
+      <!-- Analyze Button -->
+      <div class="analyze-action">
+        <button class="btn-analyze" id="analyzeBtn" onclick="startAnalysis()">
+          <span class="btn-analyze-icon">🔬</span>
+          <span>Analyze Now</span>
+        </button>
+        <p class="analyze-note">Your content is deleted immediately after analysis. We never store your files.</p>
+      </div>
+    </div>
+
+    <!-- ===== SCANNING OVERLAY ===== -->
+    <div class="scanning-overlay" id="scanningOverlay" style="display:none;">
+      <div class="scan-box card">
+        <div class="scan-animation">
+          <div class="scan-circle"></div>
+          <div class="scan-circle c2"></div>
+          <div class="scan-circle c3"></div>
+          <span class="scan-eye">👁️</span>
+        </div>
+        <h3 class="scan-title">Analyzing Content...</h3>
+        <div class="scan-steps" id="scanSteps">
+          <div class="scan-step" data-step="0">⏳ Reading file data...</div>
+          <div class="scan-step" data-step="1">🔍 Checking lighting and shadows...</div>
+          <div class="scan-step" data-step="2">🧬 Analyzing pixel patterns...</div>
+          <div class="scan-step" data-step="3">📊 Comparing against known fakes...</div>
+          <div class="scan-step" data-step="4">📝 Generating your report...</div>
+        </div>
+        <div class="scan-progress">
+          <div class="scan-bar" id="scanBar"></div>
+        </div>
+        <p class="scan-percent" id="scanPercent">0%</p>
+      </div>
+    </div>
+
+    <!-- ===== RESULTS PANEL ===== -->
+    <div class="results-panel" id="resultsPanel" style="display:none;">
+      <!-- Verdict Banner -->
+      <div class="verdict-banner" id="verdictBanner">
+        <div class="verdict-icon" id="verdictIcon">✅</div>
+        <div class="verdict-text">
+          <h2 class="verdict-title" id="verdictTitle">This looks REAL</h2>
+          <p class="verdict-subtitle" id="verdictSubtitle"></p>
+        </div>
+        <div class="verdict-score" id="verdictScore">
+          <span class="score-number" id="scoreNumber">12</span>
+          <span class="score-label">Fake Score</span>
+          <span class="score-note">(out of 100)</span>
+        </div>
+      </div>
+
+      <!-- Score Meter -->
+      <div class="score-meter card fade-in">
+        <h3>Fake Score Meter</h3>
+        <p class="meter-desc">0 = Definitely Real &nbsp;·&nbsp; 100 = Definitely Fake</p>
+        <div class="meter-track">
+          <div class="meter-fill" id="meterFill"></div>
+          <div class="meter-needle" id="meterNeedle"></div>
+        </div>
+        <div class="meter-labels">
+          <span>Real ✅</span>
+          <span>Suspicious ⚠️</span>
+          <span>Fake 🚨</span>
+        </div>
+      </div>
+
+      <!-- Plain English Explanation -->
+      <div class="explanation-card card fade-in">
+        <h3>🗣️ What This Means — In Plain English</h3>
+        <div class="explanation-text" id="explanationText"></div>
+      </div>
+
+      <!-- Detailed Checks -->
+      <div class="checks-section fade-in">
+        <h3>🔎 Detailed Checks We Ran</h3>
+        <div class="checks-grid" id="checksGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Metadata -->
+      <div class="metadata-card card fade-in" id="metadataCard">
+        <h3>📋 Hidden File Information</h3>
+        <p class="meta-intro">Every real photo has hidden data saved inside it (called metadata). Here's what we found:</p>
+        <div class="meta-grid" id="metaGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="result-actions fade-in">
+        <button class="btn-primary" style="width:auto; padding:12px 28px;" onclick="downloadReport()">⬇️ Download Full Report</button>
+        <button class="btn-outline" onclick="shareResult()">🔗 Share Result</button>
+        <button class="btn-outline" onclick="shareToEmail()">📧 Share to Email</button>
+        <button class="btn-outline" onclick="resetDetector()">🔄 Analyze Another</button>
+      </div>
+    </div>
+
+    <!-- Recent Scans Section -->
+    <section class="recent-scans fade-in" id="recentSection">
+      <h3>📜 Your Recent Scans</h3>
+      <div class="recent-grid" id="recentGrid">
+        <div class="empty-state">
+          <span>🕵️</span>
+          <p>No scans yet. Upload something to get started!</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+
+  <script src="js/nav.js"></script>
+  <script src="js/detector.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>

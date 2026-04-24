@@ -1,0 +1,195 @@
+/* =============================================
+   TRUTHLENS — Auth Page Styles
+   ============================================= */
+
+.auth-wrapper {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 24px; position: relative; z-index: 1;
+}
+
+.auth-brand {
+  text-align: center; margin-bottom: 32px;
+  animation: fadeDown 0.7s var(--ease);
+}
+.brand-logo {
+  width: 72px; height: 72px; border-radius: var(--radius-lg);
+  background: var(--bg-card); border: 1px solid var(--border-accent);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px;
+  box-shadow: var(--glow);
+  animation: pulseLogo 3s ease-in-out infinite;
+}
+@keyframes pulseLogo {
+  0%, 100% { box-shadow: 0 0 20px rgba(0,229,255,0.2); }
+  50% { box-shadow: 0 0 40px rgba(0,229,255,0.4); }
+}
+.brand-name {
+  font-family: var(--font-display); font-size: 2.2rem;
+  font-weight: 800; background: var(--grad-accent);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.brand-tagline {
+  color: var(--text-secondary); font-size: 1rem; margin-top: 4px;
+}
+
+.auth-card {
+  width: 100%; max-width: 460px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); overflow: hidden;
+  box-shadow: var(--shadow);
+  animation: fadeUp 0.7s 0.15s var(--ease) both;
+}
+
+/* Tabs */
+.auth-tabs {
+  display: flex; border-bottom: 1px solid var(--border);
+}
+.tab-btn {
+  flex: 1; padding: 18px; background: none; border: none;
+  color: var(--text-secondary); font-family: var(--font-display);
+  font-size: 0.95rem; font-weight: 600; cursor: pointer;
+  transition: all var(--transition); position: relative;
+}
+.tab-btn::after {
+  content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
+  height: 2px; background: var(--grad-btn);
+  transition: all var(--transition);
+}
+.tab-btn.active { color: var(--text-primary); }
+.tab-btn.active::after { left: 20%; right: 20%; }
+.tab-btn:hover { color: var(--text-primary); background: rgba(255,255,255,0.02); }
+
+/* Tab Panels */
+.tab-panel { display: none; padding: 28px; }
+.tab-panel.active { display: block; animation: fadeIn 0.35s var(--ease); }
+
+/* Form Elements */
+.auth-form { display: flex; flex-direction: column; gap: 16px; }
+
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label {
+  font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.form-group input {
+  padding: 13px 16px; background: var(--input-bg);
+  border: 1.5px solid var(--border); border-radius: var(--radius-md);
+  color: var(--text-primary); font-family: var(--font-body); font-size: 0.95rem;
+  transition: all var(--transition); outline: none;
+  width: 100%;
+}
+.form-group input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0,229,255,0.12);
+  background: var(--bg-card);
+}
+.form-group input::placeholder { color: var(--text-muted); }
+[data-theme="light"] .form-group input:focus {
+  box-shadow: 0 0 0 3px rgba(123,47,247,0.12);
+}
+
+/* ---- Password Visibility Toggle ---- */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.password-wrapper input {
+  padding-right: 48px; /* room for the eye button */
+}
+.eye-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: color var(--transition), background var(--transition);
+  line-height: 0;
+}
+.eye-toggle:hover {
+  color: var(--accent);
+  background: rgba(0,229,255,0.08);
+}
+[data-theme="light"] .eye-toggle:hover {
+  color: var(--accent);
+  background: rgba(123,47,247,0.08);
+}
+.eye-toggle svg {
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}
+
+.form-row { display: flex; justify-content: space-between; align-items: center; }
+.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.checkbox-label {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.88rem; color: var(--text-secondary); cursor: pointer;
+}
+.checkbox-label input[type="checkbox"] { accent-color: var(--accent); width: 16px; height: 16px; }
+.checkbox-label a { color: var(--accent); text-decoration: none; }
+.checkbox-label a:hover { text-decoration: underline; }
+
+.forgot-link {
+  font-size: 0.85rem; color: var(--accent); text-decoration: none;
+  transition: opacity var(--transition);
+}
+.forgot-link:hover { opacity: 0.7; }
+
+/* Password strength */
+.password-strength {
+  height: 4px; background: var(--border); border-radius: 2px; margin-top: 6px; overflow: hidden;
+}
+.strength-fill {
+  height: 100%; border-radius: 2px; width: 0%;
+  transition: width 0.4s var(--ease), background 0.4s;
+}
+
+/* Divider */
+.divider {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--text-muted); font-size: 0.82rem;
+}
+.divider::before, .divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+/* Social Buttons */
+.social-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.btn-social {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 11px; background: var(--input-bg); border: 1.5px solid var(--border);
+  border-radius: var(--radius-md); color: var(--text-primary);
+  font-family: var(--font-body); font-size: 0.88rem; font-weight: 500;
+  cursor: pointer; transition: all var(--transition);
+}
+.btn-social:hover { border-color: var(--border-accent); background: var(--bg-card-hover); transform: translateY(-2px); }
+
+/* Footer */
+.auth-footer {
+  margin-top: 24px; color: var(--text-muted); font-size: 0.78rem; text-align: center;
+  animation: fadeUp 0.7s 0.3s var(--ease) both;
+}
+
+.terms-label { font-size: 0.85rem; }
+
+/* Animations */
+@keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@media (max-width: 480px) {
+  .form-row-2 { grid-template-columns: 1fr; }
+  .social-btns { grid-template-columns: 1fr; }
+  .auth-card { border-radius: var(--radius-lg); }
+}

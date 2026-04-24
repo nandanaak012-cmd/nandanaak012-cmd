@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — TruthLens Deepfake Detector</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/about.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <a href="about.html" class="nav-brand">
+      <svg width="32" height="32" viewBox="0 0 44 44" fill="none">
+        <circle cx="22" cy="22" r="20" stroke="var(--accent)" stroke-width="2.5"/>
+        <path d="M14 22 C14 16 18 13 22 13 C26 13 30 16 30 22" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="22" cy="24" r="5" fill="var(--accent)" opacity="0.9"/>
+        <circle cx="22" cy="24" r="2" fill="var(--bg-primary)"/>
+      </svg>
+      TruthLens
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="detector.html">Detector</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle-nav" id="themeToggle">☀️ / 🌙</button>
+      <div class="nav-avatar" id="navAvatar">A</div>
+      <button class="nav-hamburger" id="hamburger">☰</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero-section page-section">
+    <div class="hero-eyebrow fade-in">
+      <span class="tag tag-cyan">🔍 AI-Powered Detection</span>
+    </div>
+    <h1 class="section-title hero-title fade-in">
+      Can You Trust<br/> What You <span>See Online?</span>
+    </h1>
+    <p class="section-subtitle fade-in">
+      TruthLens is a smart tool that looks at videos, images, and social media posts to tell you if they are <strong>real or fake</strong> — in plain, simple language anyone can understand.
+    </p>
+    <div class="hero-cta fade-in">
+      <a href="detector.html" class="btn-primary-link">
+        <button class="btn-primary" style="width:auto; padding: 14px 32px;">Try It Now →</button>
+      </a>
+      <button class="btn-outline" onclick="scrollToSection('how-it-works')">How It Works ↓</button>
+    </div>
+    <div class="hero-stats fade-in">
+      <div class="stat-item">
+        <span class="stat-number">98.4%</span>
+        <span class="stat-label">Detection Accuracy</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number">2.1M+</span>
+        <span class="stat-label">Scans Completed</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number">&lt; 8s</span>
+        <span class="stat-label">Average Scan Time</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Is a Deepfake? -->
+  <section class="explainer-section page-section" id="what-is">
+    <div class="section-header fade-in">
+      <span class="tag tag-pink">📚 The Basics</span>
+      <h2 class="section-title">What Is a <span>Deepfake?</span></h2>
+      <p class="section-subtitle">No tech jargon — just plain English</p>
+    </div>
+    <div class="explainer-grid">
+      <div class="explainer-card card fade-in">
+        <div class="explainer-icon">🤥</div>
+        <h3>What It Is</h3>
+        <p>A deepfake is a photo or video where a computer has been used to make someone <strong>look or sound like they did or said something they never actually did</strong>. It's like a very convincing lie made with technology.</p>
+      </div>
+      <div class="explainer-card card fade-in">
+        <div class="explainer-icon">⚠️</div>
+        <h3>Why It's Dangerous</h3>
+        <p>Deepfakes can be used to <strong>spread false information, damage reputations, or manipulate elections</strong>. You might see a video of a celebrity saying something shocking — but it was never real.</p>
+      </div>
+      <div class="explainer-card card fade-in">
+        <div class="explainer-icon">🛡️</div>
+        <h3>How We Help</h3>
+        <p>TruthLens <strong>checks the tiny details hidden in every image and video</strong> that the human eye can't see. If something looks off, we flag it and explain why — in words you understand.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-section page-section" id="how-it-works">
+    <div class="section-header fade-in">
+      <span class="tag tag-purple">⚙️ The Process</span>
+      <h2 class="section-title">How <span>TruthLens</span> Works</h2>
+      <p class="section-subtitle">Three simple steps to discover the truth</p>
+    </div>
+    <div class="steps-container">
+      <div class="step-item fade-in">
+        <div class="step-number">01</div>
+        <div class="step-content">
+          <h3>You Share the Content</h3>
+          <p>Upload an image, video file, or paste a link from social media like Facebook, Twitter, or Instagram. That's all you need to do.</p>
+        </div>
+        <div class="step-visual">📤</div>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step-item fade-in">
+        <div class="step-number">02</div>
+        <div class="step-content">
+          <h3>We Examine It Deeply</h3>
+          <p>Our system looks at the hidden data inside the file — things like lighting inconsistencies, unnatural blinking, pixel-level patterns, and data fingerprints. All of this happens in seconds.</p>
+        </div>
+        <div class="step-visual">🔬</div>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step-item fade-in">
+        <div class="step-number">03</div>
+        <div class="step-content">
+          <h3>You Get a Clear Answer</h3>
+          <p>We tell you if it's <strong>Real ✅</strong> or <strong>Likely Fake 🚨</strong> — and we explain exactly what made us suspicious, in simple everyday language.</p>
+        </div>
+        <div class="step-visual">📋</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detection Signals -->
+  <section class="signals-section page-section" id="signals">
+    <div class="section-header fade-in">
+      <span class="tag tag-cyan">🧠 What We Look For</span>
+      <h2 class="section-title">The Signs That <span>Give It Away</span></h2>
+      <p class="section-subtitle">These are the clues we check — explained simply</p>
+    </div>
+    <div class="signals-grid">
+      <div class="signal-card card fade-in">
+        <div class="signal-icon">👁️</div>
+        <h4>Unnatural Eyes</h4>
+        <p>Fake videos often have eyes that don't blink naturally, or both eyes aren't perfectly aligned with the face.</p>
+        <span class="tag tag-red">High Risk Signal</span>
+      </div>
+      <div class="signal-card card fade-in">
+        <div class="signal-icon">💡</div>
+        <h4>Wrong Lighting</h4>
+        <p>Light and shadows on the face don't match the background — like a face lit from the left but shadows going right.</p>
+        <span class="tag tag-red">High Risk Signal</span>
+      </div>
+      <div class="signal-card card fade-in">
+        <div class="signal-icon">📸</div>
+        <h4>Blurry Edges</h4>
+        <p>The edges around hair, ears, or glasses look slightly blurry or melted, especially when the person moves.</p>
+        <span class="tag tag-warning">Medium Risk Signal</span>
+      </div>
+      <div class="signal-card card fade-in">
+        <div class="signal-icon">🔢</div>
+        <h4>Hidden File Data</h4>
+        <p>Every real photo has hidden info (like which camera took it). If that info is missing or changed, it's suspicious.</p>
+        <span class="tag tag-red">High Risk Signal</span>
+      </div>
+      <div class="signal-card card fade-in">
+        <div class="signal-icon">🎭</div>
+        <h4>Face Doesn't Match Voice</h4>
+        <p>In videos, the mouth movements may not perfectly match the words being spoken — a common deepfake giveaway.</p>
+        <span class="tag tag-red">High Risk Signal</span>
+      </div>
+      <div class="signal-card card fade-in">
+        <div class="signal-icon">🔁</div>
+        <h4>Repeated Patterns</h4>
+        <p>Computer-made images often accidentally repeat tiny patterns in backgrounds or skin texture that real photos don't have.</p>
+        <span class="tag tag-warning">Medium Risk Signal</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features-section page-section">
+    <div class="section-header fade-in">
+      <span class="tag tag-purple">✨ Platform Features</span>
+      <h2 class="section-title">Everything You <span>Need</span></h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card card fade-in">
+        <div class="feature-icon-wrap">🔗</div>
+        <h4>Paste Any Social Media Link</h4>
+        <p>Works with Facebook, Twitter/X, Instagram, YouTube, TikTok, and more. Just paste the link — no downloading needed.</p>
+      </div>
+      <div class="feature-card card fade-in">
+        <div class="feature-icon-wrap">📁</div>
+        <h4>Upload Files Directly</h4>
+        <p>Upload images (JPG, PNG, WEBP) or videos (MP4, MOV, AVI) directly from your device for detailed analysis.</p>
+      </div>
+      <div class="feature-card card fade-in">
+        <div class="feature-icon-wrap">⚡</div>
+        <h4>Results in Seconds</h4>
+        <p>Most scans complete within 8 seconds. You don't have to wait long to know if something is trustworthy.</p>
+      </div>
+      <div class="feature-card card fade-in">
+        <div class="feature-icon-wrap">📖</div>
+        <h4>Plain English Explanation</h4>
+        <p>We never use confusing technical words. Every result comes with a human-friendly explanation of what we found.</p>
+      </div>
+      <div class="feature-card card fade-in">
+        <div class="feature-icon-wrap">🔒</div>
+        <h4>Your Privacy Comes First</h4>
+        <p>Your uploaded files are analyzed and immediately deleted. We never store, share, or sell your content.</p>
+      </div>
+      <div class="feature-card card fade-in">
+        <div class="feature-icon-wrap">🌐</div>
+        <h4>Browser Extension</h4>
+        <p>Install our browser extension to get real-time warnings while browsing social media — no need to visit our site each time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-section page-section fade-in">
+    <div class="cta-card card">
+      <span class="tag tag-green">🚀 Ready to Start?</span>
+      <h2 class="section-title">Start <span>Detecting</span> Fakes Today</h2>
+      <p class="section-subtitle" style="max-width:500px; margin:0 auto 32px;">It's free to use. No special knowledge required. Just upload or paste — and let TruthLens do the work.</p>
+      <a href="detector.html">
+        <button class="btn-primary" style="width:auto; padding:16px 48px; font-size:1.1rem;">Open the Detector →</button>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-brand">
+      <svg width="28" height="28" viewBox="0 0 44 44" fill="none">
+        <circle cx="22" cy="22" r="20" stroke="var(--accent)" stroke-width="2.5"/>
+        <circle cx="22" cy="24" r="5" fill="var(--accent)" opacity="0.9"/>
+        <circle cx="22" cy="24" r="2" fill="var(--bg-primary)"/>
+      </svg>
+      <span>TruthLens</span>
+    </div>
+    <p class="footer-copy">© 2024 TruthLens Inc. All rights reserved. Fighting misinformation, one scan at a time.</p>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/nav.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>
