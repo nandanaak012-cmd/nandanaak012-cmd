@@ -1,0 +1,339 @@
+/* =============================================
+   TRUTHLENS — Forensic Heatmap Styles
+   Unique feature: DeepFake DNA Heatmap
+   ============================================= */
+
+/* ── Section wrapper ── */
+.heatmap-section {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: hmFadeIn 0.5s var(--ease);
+}
+@keyframes hmFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.heatmap-header {
+  text-align: center;
+  padding: 0 8px;
+}
+.heatmap-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  background: linear-gradient(135deg, #00e5ff 0%, #a855f7 60%, #f43f5e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.heatmap-badge-new {
+  display: inline-block;
+  background: linear-gradient(135deg, #00e5ff, #a855f7);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  padding: 2px 7px;
+  border-radius: 50px;
+  vertical-align: middle;
+  margin-left: 6px;
+  text-transform: uppercase;
+}
+.heatmap-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* ── Loading state ── */
+.heatmap-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 48px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+.heatmap-spinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: hmSpin 0.75s linear infinite;
+}
+@keyframes hmSpin { to { transform: rotate(360deg); } }
+
+/* ── Content wrapper ── */
+.heatmap-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Canvas container ── */
+.heatmap-canvas-container {
+  padding: 16px;
+  overflow: hidden;
+  position: relative;
+  min-height: 120px;
+}
+
+/* Tech corner decoration */
+.heatmap-canvas-container::after {
+  content: 'FORENSIC SCAN';
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-size: 0.6rem;
+  font-family: var(--font-display);
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  opacity: 0.5;
+  font-weight: 700;
+}
+
+/* ── Controls bar ── */
+.heatmap-controls {
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.hm-ctrl-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.hm-btn {
+  padding: 8px 16px;
+  font-size: 0.83rem;
+  white-space: nowrap;
+  font-family: var(--font-body);
+}
+.hm-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.hm-slider {
+  width: 110px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  height: 4px;
+}
+#opacityValue {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 700;
+  min-width: 34px;
+}
+
+/* ── Legend ── */
+.heatmap-legend {
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.legend-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+.legend-items {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+.legend-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Forensic Zones Card ── */
+.forensic-zones-card {
+  padding: 26px 28px;
+}
+.forensic-zones-card h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+.forensic-zones {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.fzone-item {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.fzone-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.fzone-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.fzone-badge {
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  padding: 3px 11px;
+  border-radius: 50px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+.fzone-bar-bg {
+  height: 7px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.fzone-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  width: 0%;
+}
+.fzone-detail {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* ── DNA Fingerprint ── */
+.dna-fingerprint {
+  padding: 26px 28px;
+  overflow: hidden;
+}
+.dna-fingerprint h4 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1rem;
+  margin-bottom: 6px;
+  background: linear-gradient(135deg, #00e5ff, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.dna-desc {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+.dna-canvas {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.3);
+  transform-origin: center;
+}
+
+/* ── Hover Tooltip ── */
+#heatmapTooltip {
+  position: fixed;
+  z-index: 99999;
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  border-radius: 14px;
+  padding: 13px 16px;
+  width: 235px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55), 0 0 20px rgba(0, 229, 255, 0.08);
+  pointer-events: none;
+  display: none;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.htip-level {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.88rem;
+  margin-bottom: 5px;
+}
+.htip-issue {
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-bottom: 11px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+}
+.htip-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.htip-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.71rem;
+}
+.htip-label {
+  color: var(--text-muted);
+  font-weight: 700;
+  min-width: 38px;
+  letter-spacing: 0.3px;
+}
+.htip-bar-bg {
+  flex: 1;
+  height: 5px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.htip-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s;
+}
+.htip-pct {
+  color: var(--text-muted);
+  min-width: 28px;
+  text-align: right;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .heatmap-controls { flex-direction: column; align-items: stretch; }
+  .hm-ctrl-group    { justify-content: center; }
+  .hm-slider        { width: 100px; }
+  .legend-items     { gap: 10px; }
+  .forensic-zones-card, .dna-fingerprint { padding: 18px; }
+  .heatmap-header h3 { font-size: 1.15rem; }
+}

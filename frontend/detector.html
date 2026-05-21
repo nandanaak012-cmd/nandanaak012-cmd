@@ -10,6 +10,7 @@
   <script src="js/theme.js"></script>
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/detector.css" />
+  <link rel="stylesheet" href="css/heatmap.css" />
 </head>
 <body>
   <div class="bg-grid"></div>
@@ -122,11 +123,11 @@
         </div>
         <h3 class="scan-title">Analyzing Content...</h3>
         <div class="scan-steps" id="scanSteps">
-          <div class="scan-step" data-step="0">⏳ Reading file data...</div>
-          <div class="scan-step" data-step="1">🔍 Checking lighting and shadows...</div>
-          <div class="scan-step" data-step="2">🧬 Analyzing pixel patterns...</div>
-          <div class="scan-step" data-step="3">📊 Comparing against known fakes...</div>
-          <div class="scan-step" data-step="4">📝 Generating your report...</div>
+          <div class="scan-step" data-step="0">⏳ Loading image data...</div>
+          <div class="scan-step" data-step="1">🔬 Running Error Level Analysis (ELA)...</div>
+          <div class="scan-step" data-step="2">🧬 Checking noise &amp; texture patterns...</div>
+          <div class="scan-step" data-step="3">📐 Detecting edge anomalies...</div>
+          <div class="scan-step" data-step="4">📝 Generating forensic report...</div>
         </div>
         <div class="scan-progress">
           <div class="scan-bar" id="scanBar"></div>
@@ -198,6 +199,67 @@
       </div>
     </div>
 
+    <!-- ===== FORENSIC HEATMAP SECTION ===== -->
+    <div id="heatmapSection" class="heatmap-section" style="display:none;">
+      <div class="heatmap-header">
+        <h3>🧬 Forensic Heatmap — Where The AI Touched It <span class="heatmap-badge-new">UNIQUE</span></h3>
+        <p class="heatmap-subtitle">Real pixel-level forensic analysis using ELA, noise mapping &amp; edge detection. Hover anywhere on the image to see what our algorithms found.</p>
+      </div>
+
+      <!-- Loading -->
+      <div class="heatmap-loading" id="heatmapLoading">
+        <div class="heatmap-spinner"></div>
+        <p>Building forensic heatmap from pixel data...</p>
+      </div>
+
+      <!-- Main heatmap content -->
+      <div class="heatmap-content" id="heatmapContent" style="display:none;">
+
+        <!-- Canvas -->
+        <div id="heatmapCanvasContainer" class="heatmap-canvas-container card"></div>
+
+        <!-- Controls -->
+        <div class="heatmap-controls card">
+          <div class="hm-ctrl-group">
+            <button id="toggleHeatmapBtn" class="btn-outline hm-btn" onclick="toggleHeatmap()">👁️ Hide Heatmap</button>
+            <button class="btn-outline hm-btn" onclick="downloadAnnotatedImage()">⬇️ Download Annotated</button>
+          </div>
+          <div class="hm-ctrl-group">
+            <label class="hm-label">Opacity</label>
+            <input type="range" id="opacitySlider" min="0" max="100" value="55"
+              oninput="updateHeatmapOpacity(this.value)" class="hm-slider" />
+            <span id="opacityValue">55%</span>
+          </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="heatmap-legend card">
+          <div class="legend-title">Color Key</div>
+          <div class="legend-items">
+            <div class="legend-item"><div class="legend-dot" style="background:#00dc50;box-shadow:0 0 7px #00dc50"></div><span>Authentic</span></div>
+            <div class="legend-item"><div class="legend-dot" style="background:#fbbf24;box-shadow:0 0 7px #fbbf24"></div><span>Suspicious</span></div>
+            <div class="legend-item"><div class="legend-dot" style="background:#f97316;box-shadow:0 0 7px #f97316"></div><span>Manipulated</span></div>
+            <div class="legend-item"><div class="legend-dot" style="background:#f43f5e;box-shadow:0 0 7px #f43f5e"></div><span>High Manipulation</span></div>
+          </div>
+        </div>
+
+        <!-- Forensic breakdown -->
+        <div class="card forensic-zones-card fade-in">
+          <h4>🔬 Forensic Analysis Breakdown</h4>
+          <div id="forensicZones" class="forensic-zones"></div>
+        </div>
+
+        <!-- DNA Fingerprint -->
+        <div class="dna-fingerprint card fade-in">
+          <h4>🧬 DeepFake DNA Fingerprint™</h4>
+          <p class="dna-desc">A unique forensic signature generated from pixel-level analysis — no two images produce the same pattern. Bright red spikes indicate regions of detected manipulation.</p>
+          <canvas id="dnaCanvas" class="dna-canvas"></canvas>
+        </div>
+
+      </div>
+    </div>
+    <!-- ===== END FORENSIC HEATMAP ===== -->
+
     <!-- Recent Scans Section -->
     <section class="recent-scans fade-in" id="recentSection">
       <h3>📜 Your Recent Scans</h3>
@@ -214,6 +276,7 @@
 
 
   <script src="js/nav.js"></script>
+  <script src="js/heatmap.js"></script>
   <script src="js/detector.js"></script>
   <script src="js/animations.js"></script>
 </body>

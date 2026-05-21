@@ -191,7 +191,7 @@ ALLOWED_ORIGINS=http://localhost:3000,https://yourdomain.com
 
 ## 📬 Contact
 
-**Arjun Kumar** — Founder & CEO, TruthLens  
+**Nandana Anilkumar** — Founder & CEO, TruthLens  
 📧 hello@truthlens.io  
 📍 Bengaluru, Karnataka, India
 
